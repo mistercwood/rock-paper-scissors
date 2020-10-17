@@ -8,13 +8,34 @@
     <script>
 
 // Get Player choice from Player input 
+function playerPrompt() {
+    let playerChoice = prompt("Make your choice! Rock, paper, or scissors?");
+    playerChoice = playerChoice.toLowerCase();
+    return playerChoice;
+}
+
 // Generate Computer choice from random selection
-// Check to see whether Player or Computer wins
-// Output who the winner is
+function computerPlay() {
+    let compChoice = Math.floor(Math.random() * 3);
+    if (compChoice === 0) {
+        compChoice = "rock";
+    } else if (compChoice === 1) {
+        compChoice = "paper";
+    } else {
+        compChoice = "scissors";
+    }
+    return compChoice;
+}
+
+// Get both selections and check to see whether Player or Computer wins
+// Output who the winner of the round is
+
+function playRound(playerPrompt, computerPlay) {
+    
+}
+
 // Repeat 5 times total while tracking the wins for both players
 // Output who the overall winner is
-
-
 
     </script>
 </body>
