@@ -9,26 +9,19 @@
 
 // Get Player choice from Player input 
 function playerPrompt() {
-    let playerChoice = prompt("Make your choice! Rock, paper, or scissors?");
+    let playerChoice = prompt("Make your choice! 'Rock', 'paper', or 'scissors'?");
     playerChoice = playerChoice.toLowerCase();
     return playerChoice;
 }
 
-// Generate Computer choice from random selection
+// Generate Computer choice by random selection
 function computerPlay() {
-    let compChoice = Math.floor(Math.random() * 3);
-    if (compChoice === 0) {
-        compChoice = "rock";
-    } else if (compChoice === 1) {
-        compChoice = "paper";
-    } else {
-        compChoice = "scissors";
-    }
+    let options = ["rock", "paper", "scissors"]
+    let compChoice = options[Math.floor(Math.random() * 3)];
     return compChoice;
 }
 
-// Get both selections and check to see whether Player or Computer wins
-// Output who the winner of the round is
+// Get both choices, check to see whether Player or Computer wins, return the outcome
 const playerSelection = playerPrompt();
 const compSelection = computerPlay();
 
