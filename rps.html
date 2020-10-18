@@ -29,10 +29,30 @@ function computerPlay() {
 
 // Get both selections and check to see whether Player or Computer wins
 // Output who the winner of the round is
+const playerSelection = playerPrompt();
+const compSelection = computerPlay();
 
-function playRound(playerPrompt, computerPlay) {
-    
+function playRound(playerSelection, compSelection) {
+    let result
+    if ( (playerSelection === "rock" && compSelection === "scissors") || 
+    (playerSelection === "paper" && compSelection === "rock") || 
+    (playerSelection === "scissors" && compSelection === "paper") ) {
+        result = "Well done, " + playerSelection + " beats " + compSelection + ". You win!"
+    }
+    else if ( (playerSelection === "rock" && compSelection === "paper") || 
+    (playerSelection === "paper" && compSelection === "scissors") || 
+    (playerSelection === "scissors" && compSelection === "rock") ) {
+        result = "Oh no, " + compSelection + " beats " + playerSelection + ". You lose!"
+    }
+    else if ( (playerSelection === "rock" && compSelection === "rock") || 
+    (playerSelection === "paper" && compSelection === "paper") || 
+    (playerSelection === "scissors" && compSelection === "scissors") ) {
+        result = "You both chose " + playerSelection + ". It's a draw!"
+    }
+    return result;
 }
+
+console.log(playRound(playerSelection, compSelection));
 
 // Repeat 5 times total while tracking the wins for both players
 // Output who the overall winner is
