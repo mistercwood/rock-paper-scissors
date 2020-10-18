@@ -7,48 +7,67 @@
 <body>
     <script>
 
-// Get Player choice from Player input 
-function playerPrompt() {
-    let playerChoice = prompt("Make your choice! 'Rock', 'paper', or 'scissors'?");
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
-}
+    console.log("Welcome to Rock-Paper-Scissors! Good luck!");
 
-// Generate Computer choice by random selection
-function computerPlay() {
-    let options = ["rock", "paper", "scissors"]
-    let compChoice = options[Math.floor(Math.random() * 3)];
-    return compChoice;
-}
+    let playerSelection;
+    let compSelection;
+    let playerScore = 0;
+    let compScore = 0;
 
-// Get both choices, check to see whether Player or Computer wins, return the outcome
-const playerSelection = playerPrompt();
-const compSelection = computerPlay();
-
-function playRound(playerSelection, compSelection) {
-    let result
-    if ( (playerSelection === "rock" && compSelection === "scissors") || 
-    (playerSelection === "paper" && compSelection === "rock") || 
-    (playerSelection === "scissors" && compSelection === "paper") ) {
-        result = "Well done, " + playerSelection + " beats " + compSelection + ". You win!"
+    // Get player choice from prompt    
+    function playerPrompt() {
+        let playerChoice = prompt("Make your choice! 'Rock', 'paper', or 'scissors'?");
+        playerChoice = playerChoice.toLowerCase();
+        return playerChoice;
     }
-    else if ( (playerSelection === "rock" && compSelection === "paper") || 
-    (playerSelection === "paper" && compSelection === "scissors") || 
-    (playerSelection === "scissors" && compSelection === "rock") ) {
-        result = "Oh no, " + compSelection + " beats " + playerSelection + ". You lose!"
-    }
-    else if ( (playerSelection === "rock" && compSelection === "rock") || 
-    (playerSelection === "paper" && compSelection === "paper") || 
-    (playerSelection === "scissors" && compSelection === "scissors") ) {
-        result = "You both chose " + playerSelection + ". It's a draw!"
-    }
-    return result;
-}
 
-console.log(playRound(playerSelection, compSelection));
+    // Generate Computer choice by random selection
+    function computerPlay() {
+        options = ["rock", "paper", "scissors"]
+        compChoice = options[Math.floor(Math.random() * 3)];
+        return compChoice;
+    }
 
-// Repeat 5 times total while tracking the wins for both players
-// Output who the overall winner is
+    // Get both choices, check to see whether Player or Computer wins, return the outcome
+    function playRound(playerSelection, compSelection) {
+        
+        playerSelection = playerPrompt();
+        compSelection = computerPlay();
+
+        if ( (playerSelection === "rock" && compSelection === "scissors") || 
+        (playerSelection === "paper" && compSelection === "rock") || 
+        (playerSelection === "scissors" && compSelection === "paper") ) {
+            result = "Well done, " + playerSelection + " beats " + compSelection + ". You win!";
+            playerScore++;
+        }
+        else if ( (playerSelection === "rock" && compSelection === "paper") || 
+        (playerSelection === "paper" && compSelection === "scissors") || 
+        (playerSelection === "scissors" && compSelection === "rock") ) {
+            result = "Oh no, " + compSelection + " beats " + playerSelection + ". You lose!";
+            compScore++;
+        }
+        else if ( (playerSelection === "rock" && compSelection === "rock") || 
+        (playerSelection === "paper" && compSelection === "paper") || 
+        (playerSelection === "scissors" && compSelection === "scissors") ) {
+            result = "You both chose " + playerSelection + ". It's a draw!";
+        }
+
+        return result;
+    }
+
+    // Play 5 times, tracking the wins for both players, then show who the overall winner is
+    function game() {
+        for (let i=0; i<5; i++) {
+            console.log(playRound(playerSelection, compSelection));
+            console.log("The current score is: Player - " + playerScore + ", Computer - " + compScore + ".");
+        }
+        let winner = (playerScore > compScore) ? ("You win, " + playerScore + " to " + compScore + ".")
+        : ("You lose, " + playerScore + " to " + compScore + ".");
+        console.log(winner);
+    }
+
+    game();   
+    console.log("Game Over! Thanks for playing!");
 
     </script>
 </body>
