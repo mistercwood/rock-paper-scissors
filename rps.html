@@ -5,6 +5,8 @@
     <meta charset="UTF-8"/>
 </head>
 <body>
+    <p>Please press F12 and then Esc to open browser console, then refresh page to commence playing.</p>
+
     <script>
 
     console.log("Welcome to Rock-Paper-Scissors! Good luck!");
@@ -14,7 +16,7 @@
     let playerScore = 0;
     let compScore = 0;
 
-    // Get player choice from prompt    
+    // Get player choice from prompt, alert for non-valid entries and try again if needed.
     function playerPrompt() {
         let playerChoice = prompt("Make your choice: 'rock', 'paper', or 'scissors'?");
         playerChoice = playerChoice.toLowerCase();
@@ -25,14 +27,14 @@
         return playerChoice;
     }
 
-    // Generate Computer choice by random selection
+    // Generate Computer choice by random selection.
     function computerPlay() {
         options = ["rock", "paper", "scissors"]
         compChoice = options[Math.floor(Math.random() * 3)];
         return compChoice;
     }
 
-    // Get both choices, check to see whether Player or Computer wins, return the outcome
+    // Get both choices, check to see whether Player or Computer wins, return the outcome.
     function playRound(playerSelection, compSelection) {
         
         playerSelection = playerPrompt();
@@ -59,7 +61,7 @@
         return result;
     }
 
-    // Play 5 times, tracking the wins for both players but ignoring ties, then show who the overall winner is
+    // Play 5 times, tracking the wins for both players but ignoring ties, then show who the overall winner is.
     function game() {
         for (let i = 0; (playerScore + compScore) < 5; i++) {
             console.log(playRound(playerSelection, compSelection));
@@ -70,6 +72,7 @@
         console.log(winner);
     }
 
+    // Initialise the game and display a farewell message once win conditions are met.
     game();   
     console.log("Game Over! Thanks for playing!");
 
