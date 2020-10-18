@@ -16,7 +16,7 @@
 
     // Get player choice from prompt    
     function playerPrompt() {
-        let playerChoice = prompt("Make your choice! 'Rock', 'paper', or 'scissors'?");
+        let playerChoice = prompt("Make your choice: 'rock', 'paper', or 'scissors'?");
         playerChoice = playerChoice.toLowerCase();
         return playerChoice;
     }
@@ -57,7 +57,7 @@
 
     // Play 5 times, tracking the wins for both players, then show who the overall winner is
     function game() {
-        for (let i=0; i<5; i++) {
+        for (let i = 0; (playerScore + compScore) < 5; i++) {
             console.log(playRound(playerSelection, compSelection));
             console.log("The current score is: Player - " + playerScore + ", Computer - " + compScore + ".");
         }
