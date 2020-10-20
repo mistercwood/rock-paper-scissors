@@ -43,19 +43,19 @@
         if ( (playerSelection === "rock" && compSelection === "scissors") || 
         (playerSelection === "paper" && compSelection === "rock") || 
         (playerSelection === "scissors" && compSelection === "paper") ) {
-            result = "Well done, " + playerSelection + " beats " + compSelection + ". You win!";
+            result = `Well done, ${playerSelection} beats ${compSelection}. You win!`;
             playerScore++;
         }
         else if ( (playerSelection === "rock" && compSelection === "paper") || 
         (playerSelection === "paper" && compSelection === "scissors") || 
         (playerSelection === "scissors" && compSelection === "rock") ) {
-            result = "Oh no, " + compSelection + " beats " + playerSelection + ". You lose!";
+            result = `Oh no, ${compSelection} beats ${playerSelection}. You lose!`;
             compScore++;
         }
         else if ( (playerSelection === "rock" && compSelection === "rock") || 
         (playerSelection === "paper" && compSelection === "paper") || 
         (playerSelection === "scissors" && compSelection === "scissors") ) {
-            result = "You both chose " + playerSelection + ". It's a draw!";
+            result = `You both chose ${playerSelection}. It's a draw!`;
         }
 
         return result;
@@ -65,10 +65,10 @@
     function game() {
         for (let i = 0; (playerScore + compScore) < 5; i++) {
             console.log(playRound(playerSelection, compSelection));
-            console.log("The current score is: Player - " + playerScore + ", Computer - " + compScore + ".");
+            console.log(`The current score is: Player - ${playerScore}, Computer - ${compScore}.`);
         }
-        let winner = (playerScore > compScore) ? ("You win, " + playerScore + " to " + compScore + ".")
-        : ("You lose, " + playerScore + " to " + compScore + ".");
+        let winner = (playerScore > compScore) ? (`You win, ${playerScore} to ${compScore}.`)
+        : (`You lose, ${playerScore} to ${compScore}.`);
         console.log(winner);
     }
 
